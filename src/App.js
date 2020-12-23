@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
+import "./App.less";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Category from "./pages/Category";
+import { NotFound } from "./shared/Components";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         >
           <Category />
         </Route>
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );

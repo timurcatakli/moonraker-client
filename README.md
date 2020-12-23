@@ -15,3 +15,5 @@
 - remove lodash
 - seo
 - do 404
+- manifest, robots.txt
+- Add go to store link
