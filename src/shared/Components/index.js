@@ -5,6 +5,7 @@ import CategoryHeader from "./CategoryHeader";
 import Filter from "./Filter";
 import NotFound from "./NotFound";
 import NoProducts from "./NoProducts";
+import PageHeader from "./PageHeader";
 import SelectField from "./SelectField";
 
 export {
@@ -15,5 +16,6 @@ export {
   Filter,
   NoProducts,
   NotFound,
+  PageHeader,
   SelectField
 };
