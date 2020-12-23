@@ -1,171 +1,180 @@
 import React from "react";
 import styled from "styled-components";
-import { Typography, Select, PageHeader, Tag, Button } from "antd";
 import {
-  ROOT_CATEGORIES,
-  SORT_ORDER_FIELDS,
-  SORT_BY_FIELDS
-} from "../../shared/constants";
+  Grid,
+  Row,
+  Col,
+  Typography,
+  Select,
+  PageHeader,
+  Tag,
+  BackTop
+} from "antd";
+import { useMediaQuery } from "react-responsive";
+import { DoubleRightOutlined } from "@ant-design/icons";
+import ALL_CATEGORIES from "../../shared/categories";
+import { SORT_ORDER_FIELDS, SORT_BY_FIELDS } from "../../shared/constants";
 import SITE_CONFIG from "../../shared/config";
+import { SelectField } from "../../shared/Components";
 
+const { useBreakpoint } = Grid;
 const { Text } = Typography;
 const { Option } = Select;
 
+const style = { background: "#0092ff", padding: "8px 0" };
+
 const FormWrapper = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 4px;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const RowContainer = styled.div`
-  display: flex;
-  align-items: center;
+  display: grid;
+  align-items: flex-start;
   gap: 12px;
   background-color: white;
   padding: 12px;
   border-radius: ${SITE_CONFIG.borderRadius};
+  flex-wrap: wrap;
 `;
 
 const CategoryHeader = props => {
   const {
-    activeId,
-    activeLink,
-    activeName,
-    activeSortBy,
-    activeSortOrder,
-    children,
-    onFilterChange,
+    cat0,
+    cat1,
+    cat2,
+    cat3,
+    active,
     onRootChange,
-    rootId,
-    rootLink,
-    rootName
+    onSubCategoryChange,
+    onFilterChange
   } = props;
-
-  const [month, date, year] = new Date().toLocaleDateString("en-US").split("/");
 
   const onSortByChange = value => {
     onFilterChange({
       sortBy: value,
-      sortOrder: activeSortOrder
+      sortOrder: active.sortOrder
     });
   };
   const onSortOrderChange = value => {
     onFilterChange({
-      sortBy: activeSortBy,
+      sortBy: active.sortBy,
       sortOrder: value
     });
   };
 
+  const [month, date, year] = new Date().toLocaleDateString("en-US").split("/");
+  const isLayoutA = useMediaQuery({ maxWidth: 904 });
+  const isLayoutB = useMediaQuery({ minWidth: 905, maxWidth: 1350 });
+  const catColSpan = isLayoutA ? 24 : null;
+  const gridTemplateColumns = isLayoutB ? "1fr" : "2fr 1fr";
+  const filterJustify = isLayoutB ? "start" : "end";
+  const rowGutter = isLayoutA ? [10, 10] : [10, 0];
   return (
     <PageHeader
       tags={<Tag color="blue">{`updated on ${month}/${date}/${year}`}</Tag>}
-      title={`Top 50 Best Selling ${activeName} Products`}
+      title={`Top 50 Best Selling ${active.name} Products`}
     >
-      <FormWrapper>
-        <RowContainer>
-          <div>
-            <Text type="secondary">Root Category</Text>
-          </div>
-          <div>
-            <Select
-              autoFocus
-              onChange={onRootChange}
-              defaultValue={rootId}
-              optionFilterProp="name"
-              showSearch
-              style={{ width: 240 }}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-              filterSort={(optionA, optionB) =>
-                optionA.children
-                  .toLowerCase()
-                  .localeCompare(optionB.children.toLowerCase())
-              }
-            >
-              {ROOT_CATEGORIES.map(category => {
-                const { id, name, link } = category;
-                return (
-                  <Option value={id} name={name} link={link} key={id}>
-                    {name}
-                  </Option>
-                );
-              })}
-            </Select>
-          </div>
-        </RowContainer>
-        <RowContainer>
-          <div>
-            <Text type="secondary">Sub 1</Text>
-          </div>
-          <div>
-            <Select
-              autoFocus
-              onChange={onRootChange}
-              defaultValue={rootId}
-              optionFilterProp="name"
-              showSearch
-              style={{ width: 240 }}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-              filterSort={(optionA, optionB) =>
-                optionA.children
-                  .toLowerCase()
-                  .localeCompare(optionB.children.toLowerCase())
-              }
-            >
-              {children.map(category => {
-                const { id, name, link } = category;
-                return (
-                  <Option value={id} name={name} link={link} key={id}>
-                    {name}
-                  </Option>
-                );
-              })}
-            </Select>
-          </div>
-        </RowContainer>
-
-        <RowContainer>
-          <div>
-            <Text type="secondary">Sort Field</Text>
-          </div>
-          <div>
-            <Select
-              onChange={onSortByChange}
-              value={activeSortBy}
-              style={{ width: 200 }}
-            >
-              {SORT_BY_FIELDS.map(field => {
-                return (
-                  <Option key={field.key} value={field.key}>
-                    {field.label}
-                  </Option>
-                );
-              })}
-            </Select>
-          </div>
-          <div>
-            <Text type="secondary">Sort Order</Text>
-          </div>
-          <div>
-            <Select
-              onChange={onSortOrderChange}
-              value={activeSortOrder}
-              style={{ width: 200 }}
-            >
-              {SORT_ORDER_FIELDS.map(order => {
-                return (
-                  <Option key={order.key} value={order.key}>
-                    {order.label}
-                  </Option>
-                );
-              })}
-            </Select>
-          </div>
-        </RowContainer>
-      </FormWrapper>
+      <RowContainer style={{ gridTemplateColumns }}>
+        <div>
+          {/* --------------- */}
+          <Row gutter={rowGutter} align="middle" justify="start">
+            <Col span={catColSpan}>
+              <div style={{ width: "80px" }}>Categories</div>
+            </Col>
+            <Col span={catColSpan}>
+              <div>
+                <SelectField
+                  onChange={onRootChange}
+                  selectProps={{
+                    placeholder: "Pick a category...",
+                    value: cat0.slug
+                  }}
+                  data={ALL_CATEGORIES}
+                />
+              </div>
+            </Col>
+            <Col span={catColSpan}>
+              {/* Select */}
+              {cat0 !== undefined &&
+                Array.isArray(cat0.children) &&
+                cat0.children.length > 0 && (
+                  <SelectField
+                    onChange={onSubCategoryChange}
+                    // value={cat1?.slug || ""}
+                    data={cat0.children}
+                    optionProps={{ level: 1 }}
+                    selectProps={{
+                      placeholder: "Pick a category...",
+                      value: cat1?.slug || null
+                    }}
+                  />
+                )}
+              {/* Select */}
+            </Col>
+            <Col span={catColSpan}>
+              {/* Select */}
+              {cat1 !== undefined &&
+                Array.isArray(cat1.children) &&
+                cat1.children.length > 0 && (
+                  <SelectField
+                    onChange={onSubCategoryChange}
+                    // value={cat1?.slug || ""}
+                    data={cat1.children}
+                    optionProps={{ level: 2 }}
+                    selectProps={{
+                      placeholder: "Pick a category...",
+                      value: cat2?.slug || null
+                    }}
+                  />
+                )}
+              {/* Select */}
+            </Col>
+          </Row>
+          {/* --------------- */}
+        </div>
+        <div>
+          {/* --------------- */}
+          <Row gutter={rowGutter} align="middle" justify={filterJustify}>
+            <Col span={catColSpan}>
+              <div style={{ width: "80px" }}>Sort By</div>
+            </Col>
+            <Col span={catColSpan}>
+              <Select
+                onChange={onSortByChange}
+                value={active.sortBy}
+                style={{ width: 120 }}
+              >
+                {SORT_BY_FIELDS.map(field => {
+                  return (
+                    <Option key={field.key} value={field.key}>
+                      {field.label}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Col>
+            <Col span={catColSpan}>
+              <Select
+                onChange={onSortOrderChange}
+                value={active.sortOrder}
+                style={{ width: 120 }}
+              >
+                {SORT_ORDER_FIELDS.map(order => {
+                  return (
+                    <Option key={order.key} value={order.key}>
+                      {order.label}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Col>
+          </Row>
+          {/* --------------- */}
+        </div>
+      </RowContainer>
     </PageHeader>
   );
 };

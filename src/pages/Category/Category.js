@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { Layout, Spin } from "antd";
+import { Layout, Spin, BackTop } from "antd";
 import { useQuery } from "@apollo/client";
 import { useHistory, useParams } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -8,7 +8,11 @@ import { CategoryHeader } from "../../shared/Components/";
 import { CATEGORY_BESTSELLERS } from "../../shared/gql";
 import SITE_CONFIG from "../../shared/config";
 import reducer from "./reducer";
-import { CategoryFooter, CategoryContent } from "../../shared/Components/";
+import {
+  CategoryFooter,
+  CategoryContent,
+  PageHeader
+} from "../../shared/Components/";
 
 const { Content } = Layout;
 const ContentContainerWrapper = styled(Content)`
@@ -21,6 +25,16 @@ const ContentContainerWrapper = styled(Content)`
 const ContentWrapper = styled.div`
   height: 100%;
   padding: 24px;
+`;
+
+const BackTopWrapper = styled.div`
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: ${SITE_CONFIG.borderRadius};
+  text-align: center;
+  font-size: 14px;
+  background-color: #69dbb1;
 `;
 
 const LoadingContentWrapper = styled.div`
@@ -97,6 +111,7 @@ const Category = props => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Layout>
+        <PageHeader />
         <CategoryHeader
           cat0={state.cat0}
           cat1={state.cat1}
@@ -126,6 +141,9 @@ const Category = props => {
         </ContentContainerWrapper>
         <CategoryFooter />
       </Layout>
+      <BackTop>
+        <BackTopWrapper>UP</BackTopWrapper>
+      </BackTop>
     </Layout>
   );
 };
