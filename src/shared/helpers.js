@@ -8,7 +8,7 @@ export const generateSlug = name => {
   return nextName;
 };
 
-const recursiveTraverse = (list, start = 0) => {
+export const recursiveTraverse = (list, start = 0) => {
   for (let i of list) {
     console.log(`${start} - ${i.slug}`);
     if (i.children.length > 0) {
@@ -28,7 +28,6 @@ export const fetchCategoryTree = (paramsArr, allCategories) => {
       sortOrder: SORT_ORDER_FIELDS[0].key
     }
   };
-  console.log("paramsArr", paramsArr);
   const {
     slug1 = undefined,
     slug2 = undefined,

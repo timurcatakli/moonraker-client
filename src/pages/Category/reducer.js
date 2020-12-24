@@ -1,4 +1,3 @@
-import { SORT_ORDER_FIELDS, SORT_BY_FIELDS } from "../../shared/constants";
 import allCategories from "../../shared/categories";
 
 const getCategoryBySlug = (slug, list = allCategories) => {
@@ -30,7 +29,6 @@ const reducer = (state, action) => {
         active: { ...state.active, ...cat0 }
       };
     case "changeSubCategory":
-      console.log(action.category.data.level);
       const selectedCategory = getCategoryBySlug(action.category.value);
       if (action.category.data.level === 1) {
         return {

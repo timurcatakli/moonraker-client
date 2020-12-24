@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
+import SITE_CONFIG from "./shared/config";
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri: SITE_CONFIG.graphQL,
   cache: new InMemoryCache()
 });
 

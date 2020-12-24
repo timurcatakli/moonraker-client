@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.less";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Category from "./pages/Category";
 import { NotFound } from "./shared/Components";
+import "./App.less";
 
 function App() {
   return (

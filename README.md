@@ -15,5 +15,10 @@
 - seo
 - ✅ do 404
 - manifest, robots.txt
-- Add go to store link
-- edit public index.html
+
+* ✅Fix package.json info
+* ✅Add go to store link
+* ✅edit public index.html
+* ✅ seo
+* 🚀Rating / 5 var Apps&Games altinda
+* 🚀there are scenarios where bestsellers: []

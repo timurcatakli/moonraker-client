@@ -1,7 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import { Spin, Row, Col, Divider } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Row, Col } from "antd";
 import { NoProducts } from "../../shared/Components";
 import Product from "./Product";
 

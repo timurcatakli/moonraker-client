@@ -9,18 +9,16 @@ import {
   Divider,
   Image,
   Row,
-  Tooltip,
   Typography
 } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import Truncate from "react-truncate";
 import SITE_CONFIG from "../../shared/config";
 
 const { Paragraph, Title } = Typography;
 const ProductWrapper = styled.div``;
 
 const Product = props => {
-  const { image, loading, rank, rating, ratingsTotal, title } = props;
+  const { image, link, loading, rank, rating, ratingsTotal, title } = props;
   const priceLower = props.priceLower || { value: 0, raw: "N/A" };
   const priceUpper = props.priceUpper || { value: 0, raw: "N/A" };
   const existsPriceRange = priceLower.value !== priceUpper.value;
@@ -37,7 +35,9 @@ const Product = props => {
           style={{ borderRadius: SITE_CONFIG.borderRadius }}
         >
           <div>
-            <Image width={200} src={image} />
+            <a href={link}>
+              <Image width={200} src={image} alt={title} preview={false} />
+            </a>
           </div>
           <Divider plain dashed />
           <div style={{ height: "46px" }}>
@@ -67,6 +67,8 @@ const Product = props => {
           <Row gutter={24} style={{ marginTop: "20px" }}>
             <Col span={24}>
               <Button
+                style={{ padding: "0px 20px" }}
+                href={link}
                 type="primary"
                 shape="round"
                 icon={<ShoppingCartOutlined />}

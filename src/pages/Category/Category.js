@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import styled from "styled-components";
 import { Layout, Spin, BackTop } from "antd";
 import { useQuery } from "@apollo/client";
+import { Helmet } from "react-helmet";
 import { useHistory, useParams } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
 import { CategoryHeader } from "../../shared/Components/";
@@ -68,11 +69,8 @@ const Category = props => {
       sortOrder: state.active.sortOrder
     }
   });
-  console.log(state);
   const { categoryBestsellers = {} } = data || {};
-  const currentCategory = categoryBestsellers.current_category || {};
-  const parentCategory = categoryBestsellers.parent_category || {};
-  const childCategories = categoryBestsellers.child_categories || [];
+  const { bestsellers = [] } = categoryBestsellers;
 
   const generateUri = (params, data) => {
     let nextUri = "/best-sellers";
@@ -86,14 +84,19 @@ const Category = props => {
   };
 
   const handleRootChange = (value, data) => {
+    // value => root category slug
+    // data => {{key: "appliances", value: "appliances", children: "Appliances"}}
+    // console.log(data);
     history.push(`/best-sellers/${value}`);
     dispatch({
       type: "changeRootCategory",
-      category: { data, value }
+      category: { value, data }
     });
   };
 
   const handleSubCategoryChange = (value, data) => {
+    console.log(value);
+    console.log(data);
     history.push(generateUri(params, data));
     dispatch({
       type: "changeSubCategory",
@@ -107,9 +110,13 @@ const Category = props => {
       filter
     });
   };
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Title</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Layout>
         <PageHeader />
         <CategoryHeader
@@ -132,10 +139,7 @@ const Category = props => {
             wrapperClassName="loading-spinner"
           >
             <ContentWrapper>
-              <CategoryContent
-                loading={loading}
-                data={categoryBestsellers.bestsellers}
-              />
+              <CategoryContent loading={loading} data={bestsellers} />
             </ContentWrapper>
           </Spin>
         </ContentContainerWrapper>

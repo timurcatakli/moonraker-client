@@ -1,13 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-import { Typography, Select, PageHeader, Tag, Button } from "antd";
-import ALL_CATEGORIES from "../../shared/categories";
-import SITE_CONFIG from "../../shared/config";
+import { Select } from "antd";
 
 const { Option } = Select;
 
 const SelectField = props => {
-  const { onChange, value, data, optionProps, selectProps } = props;
+  const { onChange, data, optionProps, selectProps } = props;
   return (
     <Select
       {...selectProps}
