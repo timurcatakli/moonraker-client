@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Icon from "@ant-design/icons";
 import styled from "styled-components";
 import SITE_CONFIG from "../../shared/config";
@@ -20,6 +21,7 @@ const Logo = styled.div`
   padding: 16px;
   border-radius: ${SITE_CONFIG.borderRadius};
   gap: 24px;
+  flex-wrap: wrap;
 
   .logo-inc {
     font-size: 34px;
@@ -28,6 +30,7 @@ const Logo = styled.div`
     letter-spacing: 8px;
     line-height: 34px;
     margin-bottom: 6px;
+    text-align: center;
   }
 
   .logo-slogan {
@@ -39,6 +42,7 @@ const Logo = styled.div`
     background-color: #9a35ef;
     padding: 4px 14px;
     border-radius: ${SITE_CONFIG.borderRadius};
+    text-align: center;
   }
 `;
 
@@ -52,13 +56,15 @@ const LogoText = styled.div`
 const PageHeader = props => {
   return (
     <LogoWrapper>
-      <Logo>
-        <PandaIcon style={{ fontSize: "64px" }} />
-        <LogoText>
-          <div className="logo-inc">Smart Panda</div>
-          <div className="logo-slogan">SHOP THE BESTSELLERS</div>
-        </LogoText>
-      </Logo>
+      <Link to={"/"}>
+        <Logo>
+          <PandaIcon style={{ fontSize: "64px" }} />
+          <LogoText>
+            <div className="logo-inc">Smart Panda</div>
+            <div className="logo-slogan">SHOP THE BESTSELLERS</div>
+          </LogoText>
+        </Logo>
+      </Link>
     </LogoWrapper>
   );
 };

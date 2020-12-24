@@ -139,8 +139,8 @@ const Category = props => {
             </ContentWrapper>
           </Spin>
         </ContentContainerWrapper>
-        <CategoryFooter />
       </Layout>
+      <CategoryFooter />
       <BackTop>
         <BackTopWrapper>UP</BackTopWrapper>
       </BackTop>

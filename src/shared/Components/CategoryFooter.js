@@ -8,6 +8,13 @@ const CategoryFooter = props => {
     <Footer style={{ textAlign: "center" }}>
       Made with <span style={{ color: "#e25555" }}>&#9829;</span> in San
       Francisco
+      <br />
+      <a
+        href="https://stories.freepik.com/business"
+        style={{ fontSize: "8px" }}
+      >
+        Illustration by Freepik Stories
+      </a>
     </Footer>
   );
 };

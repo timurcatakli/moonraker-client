@@ -9,12 +9,14 @@ import {
   Divider,
   Image,
   Row,
-  Tooltip
+  Tooltip,
+  Typography
 } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import Truncate from "react-truncate";
 import SITE_CONFIG from "../../shared/config";
 
+const { Paragraph, Title } = Typography;
 const ProductWrapper = styled.div``;
 
 const Product = props => {
@@ -38,14 +40,16 @@ const Product = props => {
             <Image width={200} src={image} />
           </div>
           <Divider plain dashed />
-          <div>
-            <Tooltip placement="topLeft" title={title}>
-              <h4>
-                <Truncate lines={2} trimWhitespace>
-                  {title}
-                </Truncate>
-              </h4>
-            </Tooltip>
+          <div style={{ height: "46px" }}>
+            <Title level={5}>
+              <Paragraph
+                ellipsis={{
+                  rows: 2
+                }}
+              >
+                {title}
+              </Paragraph>
+            </Title>
           </div>
           <Divider plain dashed />
           <Descriptions bordered column={1}>
