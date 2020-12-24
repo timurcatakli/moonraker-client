@@ -62,7 +62,7 @@ const Category = props => {
     active
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { loading, error, data } = useQuery(CATEGORY_BESTSELLERS, {
+  const { loading, data } = useQuery(CATEGORY_BESTSELLERS, {
     variables: {
       url: state.active.link,
       sortBy: state.active.sortBy,
