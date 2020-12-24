@@ -1,3 +1,23 @@
+# Smart Panda (moonraker) Client
+
+## Build steps for Heroku
+
+https://github.com/mars/create-react-app-buildpack
+
+## Deploying to Heroku
+
+- Commit changes to `master` branch
+- Run `git push heroku master`
+- Open the site `heroku open`
+- Site is located at: https://test-timcat.herokuapp.com/
+- Heroku command-line tools (CLI) is required...
+
+## Deploying to Github
+
+- Github repo name is: `https://github.com/timurcatakli/moonraker-client`
+
+## Roadmap
+
 - Fix error conditions when graphql is not working etc.
 - Protect ENV API Keys
 - Fix package.json info
