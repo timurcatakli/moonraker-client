@@ -8,7 +8,7 @@ import allCategories from "../../shared/categories";
 const CategoryWrapper = props => {
   const params = useParams();
   const categoryTree = fetchCategoryTree(params, allCategories);
-  console.log("categoryTree", categoryTree);
+
   if (!categoryTree) return <NotFound />;
   return <Category tree={categoryTree} />;
 };

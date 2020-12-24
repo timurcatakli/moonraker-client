@@ -1,4 +1,4 @@
-import Breadcrumb from "./Breadcrumb";
+import CategoryBreadcrumb from "./CategoryBreadcrumb";
 import CategoryContent from "./CategoryContent";
 import CategoryFooter from "./CategoryFooter";
 import CategoryHeader from "./CategoryHeader";
@@ -9,7 +9,7 @@ import PageHeader from "./PageHeader";
 import SelectField from "./SelectField";
 
 export {
-  Breadcrumb,
+  CategoryBreadcrumb,
   CategoryContent,
   CategoryFooter,
   CategoryHeader,
