@@ -22,3 +22,5 @@
 * ✅ seo
 * 🚀Rating / 5 var Apps&Games altinda
 * 🚀there are scenarios where bestsellers: []
+
+https://github.com/mars/create-react-app-buildpack
