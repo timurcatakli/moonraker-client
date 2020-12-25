@@ -17,7 +17,7 @@ const MainLayoutWrapper = styled(Layout)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 40px;
+  padding: 0px 4%;
 `;
 
 const MainContentWrapper = styled(Layout)`
@@ -67,75 +67,7 @@ const Home = props => {
             <PageHeader />
           </Col>
         </Row>
-        <Row>
-          <Col span={catColSpan}>
-            <TitleWrapper>
-              <Title level={1}>
-                Save time & money by simply browsing the bestsellers...
-              </Title>
-              <Text>
-                No more losing time researching the bestseller of a category,
-                finding the most reviewed product or the highest rated product.
-                Pick a category and discover.
-              </Text>{" "}
-              <Tag
-                icon={<ClockCircleTwoTone twoToneColor="#eb2f96" />}
-                color="#ff5b83"
-              >
-                List Updated Daily
-              </Tag>
-            </TitleWrapper>
-            <NavigationWrapper>
-              <div>
-                <img
-                  src={Arrow}
-                  width={80}
-                  alt="Smart Panda"
-                  style={{ color: "gold" }}
-                />
-              </div>
-              <div style={{ marginTop: "14px" }}>
-                <Select
-                  size="large"
-                  autoFocus
-                  onChange={onCategoryChange}
-                  placeholder="Start by picking a category:"
-                  optionFilterProp="name"
-                  showSearch
-                  style={{ width: 300 }}
-                  filterOption={(input, option) =>
-                    option.children
-                      .toLowerCase()
-                      .indexOf(input.toLowerCase()) >= 0
-                  }
-                  filterSort={(optionA, optionB) =>
-                    optionA.children
-                      .toLowerCase()
-                      .localeCompare(optionB.children.toLowerCase())
-                  }
-                >
-                  {categories.map(category => {
-                    const { slug, name } = category;
-                    return (
-                      <Option value={slug} key={slug}>
-                        {name}
-                      </Option>
-                    );
-                  })}
-                </Select>
-              </div>
-            </NavigationWrapper>
-          </Col>
-          <Col span={catColSpan} align="middle">
-            {!isLayoutA && (
-              <div style={{ padding: "20px" }}>
-                <img src={Hero} width={300} alt="Smart Panda" />
-              </div>
-            )}
-          </Col>
-        </Row>
       </MainContentWrapper>
-      <CategoryFooter />
     </MainLayoutWrapper>
   );
 };
