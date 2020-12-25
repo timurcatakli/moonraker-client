@@ -12,9 +12,17 @@ https://github.com/mars/create-react-app-buildpack
 - Site is located at: https://test-timcat.herokuapp.com/
 - Heroku command-line tools (CLI) is required...
 
+## Adding Heroku as a git remote repo
+
+- `heroku git:remote -a moonraker-client`
+
 ## Deploying to Github
 
 - Github repo name is: `https://github.com/timurcatakli/moonraker-client`
+
+## Avatar
+
+- https://getavataaars.com/?accessoriesType=Prescription01&hatColor=Heather&ref=producthunt&topType=WinterHat2
 
 ## Roadmap
 

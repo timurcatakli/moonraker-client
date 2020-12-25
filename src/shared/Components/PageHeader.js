@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import Icon from "@ant-design/icons";
 import styled from "styled-components";
 import SITE_CONFIG from "../../shared/config";
-import PandaSvg from "./Logo";
-
-const PandaIcon = props => <Icon component={PandaSvg} {...props} />;
+import avatar from "./avataaars.png";
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -24,10 +22,10 @@ const Logo = styled.div`
   flex-wrap: wrap;
 
   .logo-inc {
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     line-height: 34px;
     margin-bottom: 6px;
     text-align: center;
@@ -40,7 +38,7 @@ const Logo = styled.div`
     text-transform: uppercase;
     letter-spacing: 6.5px;
     background-color: #9a35ef;
-    padding: 4px 14px;
+    padding: 4px 84px;
     border-radius: ${SITE_CONFIG.borderRadius};
     text-align: center;
   }
@@ -58,10 +56,10 @@ const PageHeader = props => {
     <LogoWrapper>
       <Link to={"/"}>
         <Logo>
-          <PandaIcon style={{ fontSize: "64px" }} />
+          <img src={avatar} alt="Logo" width="100" />
           <LogoText>
-            <div className="logo-inc">Smart Panda</div>
-            <div className="logo-slogan">SHOP THE BESTSELLERS</div>
+            <div className="logo-inc">{SITE_CONFIG.siteName}</div>
+            <div className="logo-slogan">{SITE_CONFIG.slogan}</div>
           </LogoText>
         </Logo>
       </Link>

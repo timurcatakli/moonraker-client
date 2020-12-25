@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col, Select, PageHeader, Tag, Breadcrumb } from "antd";
+import { Row, Col, Select, PageHeader, Tag } from "antd";
 import { useMediaQuery } from "react-responsive";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import ALL_CATEGORIES from "../../shared/categories";
 import { SORT_ORDER_FIELDS, SORT_BY_FIELDS } from "../../shared/constants";
 import SITE_CONFIG from "../../shared/config";
