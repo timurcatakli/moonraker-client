@@ -15,6 +15,7 @@ const { Option } = Select;
 
 const MainLayoutWrapper = styled(Layout)`
   min-height: 100vh;
+  min-width: 360px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -35,10 +36,7 @@ const ContentWrapper = styled.div`
 
 const NavigationWrapper = styled.div`
   display: flex;
-  justify-content: end;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  background-color: tomato;
 
   .navigation-label {
     color: rgba(0, 0, 0, 0.85);
@@ -99,16 +97,27 @@ const Home = props => {
                 </Tag>
               </div>
             </ContentWrapper>
-            {/* <NavigationWrapper>
-              <div>
+          </Col>
+          <Col span={catColSpan} align="middle">
+            {!isLayoutA && (
+              <div style={{ padding: "20px" }}>
+                <img src={Hero} width={300} alt={SITE_CONFIG.siteName} />
+              </div>
+            )}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <NavigationWrapper>
+              <div style={{ backgroundColor: "gold", width: "60px" }}>
                 <img
                   src={Arrow}
-                  width="10%"
-                  alt="Smart Panda"
+                  width="100%"
+                  alt={SITE_CONFIG.siteName}
                   style={{ color: "gold" }}
                 />
               </div>
-              <div style={{ marginTop: "14px" }}>
+              <div style={{ background: "white" }}>
                 <Select
                   size="large"
                   autoFocus
@@ -138,14 +147,7 @@ const Home = props => {
                   })}
                 </Select>
               </div>
-            </NavigationWrapper> */}
-          </Col>
-          <Col span={catColSpan} align="middle">
-            {!isLayoutA && (
-              <div style={{ padding: "20px" }}>
-                <img src={Hero} width={300} alt={SITE_CONFIG.siteName} />
-              </div>
-            )}
+            </NavigationWrapper>
           </Col>
         </Row>
       </MainContentWrapper>
