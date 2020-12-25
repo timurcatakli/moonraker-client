@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Select, Layout, Typography, Row, Col, Tag } from "antd";
 import { ClockCircleTwoTone } from "@ant-design/icons";
+import SITE_CONFIG from "../../shared/config";
 import Hero from "./hero.svg";
 import Arrow from "./arrow.svg";
 import { CategoryFooter, PageHeader } from "../../shared/Components/";
@@ -17,18 +18,18 @@ const MainLayoutWrapper = styled(Layout)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 4%;
+  padding: 0px 8%;
 `;
 
 const MainContentWrapper = styled(Layout)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  max-width: 960px;
+  max-width: 760px;
 `;
 
-const TitleWrapper = styled.div`
-  padding: 20px;
+const ContentWrapper = styled.div`
+  padding: 0px;
   line-height: 28px;
 `;
 
@@ -67,7 +68,88 @@ const Home = props => {
             <PageHeader />
           </Col>
         </Row>
+        <Row>
+          <Col span={catColSpan}>
+            <ContentWrapper>
+              <div>
+                <Title level={1}>
+                  Save time & money simply by browsing the bestsellers...
+                </Title>
+              </div>
+              <div
+                style={{
+                  marginBottom: "1.5em"
+                }}
+              >
+                <Text>
+                  No more losing time researching the bestseller of a category.
+                  Find the most reviewed or the highest rated product.
+                </Text>
+              </div>
+              <div
+                style={{
+                  marginBottom: "1.5em"
+                }}
+              >
+                <Tag
+                  icon={<ClockCircleTwoTone twoToneColor="#eb2f96" />}
+                  color="#ff5b83"
+                >
+                  List Updated Daily
+                </Tag>
+              </div>
+            </ContentWrapper>
+            {/* <NavigationWrapper>
+              <div>
+                <img
+                  src={Arrow}
+                  width="10%"
+                  alt="Smart Panda"
+                  style={{ color: "gold" }}
+                />
+              </div>
+              <div style={{ marginTop: "14px" }}>
+                <Select
+                  size="large"
+                  autoFocus
+                  onChange={onCategoryChange}
+                  placeholder="Start by picking a category:"
+                  optionFilterProp="name"
+                  showSearch
+                  style={{ width: 300 }}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                  filterSort={(optionA, optionB) =>
+                    optionA.children
+                      .toLowerCase()
+                      .localeCompare(optionB.children.toLowerCase())
+                  }
+                >
+                  {categories.map(category => {
+                    const { slug, name } = category;
+                    return (
+                      <Option value={slug} key={slug}>
+                        {name}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              </div>
+            </NavigationWrapper> */}
+          </Col>
+          <Col span={catColSpan} align="middle">
+            {!isLayoutA && (
+              <div style={{ padding: "20px" }}>
+                <img src={Hero} width={300} alt={SITE_CONFIG.siteName} />
+              </div>
+            )}
+          </Col>
+        </Row>
       </MainContentWrapper>
+      <CategoryFooter />
     </MainLayoutWrapper>
   );
 };
