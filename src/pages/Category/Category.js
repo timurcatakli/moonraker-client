@@ -84,9 +84,6 @@ const Category = props => {
   };
 
   const handleRootChange = (value, data) => {
-    // value => root category slug
-    // data => {{key: "appliances", value: "appliances", children: "Appliances"}}
-    // console.log(data);
     history.push(`/best-sellers/${value}`);
     dispatch({
       type: "changeRootCategory",
@@ -95,8 +92,6 @@ const Category = props => {
   };
 
   const handleSubCategoryChange = (value, data) => {
-    console.log(value);
-    console.log(data);
     history.push(generateUri(params, data));
     dispatch({
       type: "changeSubCategory",
@@ -114,8 +109,8 @@ const Category = props => {
     <Layout style={{ minHeight: "100vh" }}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <title>{state.active.name} best-selling products</title>
+        <link rel="canonical" href="http://timsbestsellers.com" />
       </Helmet>
       <Layout>
         <PageHeader />

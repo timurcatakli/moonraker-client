@@ -1,4 +1,4 @@
-# Smart Panda (moonraker) Client
+# Tim's Best Sellers (moonraker) Client
 
 ## Build steps for Heroku
 

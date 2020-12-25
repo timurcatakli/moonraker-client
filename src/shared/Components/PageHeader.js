@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Icon from "@ant-design/icons";
 import styled from "styled-components";
 import SITE_CONFIG from "../../shared/config";
 import avatar from "./avataaars.png";
